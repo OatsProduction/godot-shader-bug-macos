@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcficr885eyco"]
+
+[ext_resource type="Shader" path="res://ToonWater.gdshader" id="1_aj6mg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivr0u"]
+render_priority = 0
+shader = ExtResource("1_aj6mg")
+shader_parameter/beer_factor = 0.8
+shader_parameter/foam_distance = 0.01
+shader_parameter/foam_max_distance = 0.4
+shader_parameter/foam_min_distance = 0.04
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/surface_noise_tiling = Vector2(1, 4)
+shader_parameter/surface_noise_scroll = Vector3(0.03, 0.03, 0)
+shader_parameter/surface_noise_cutoff = 0.777
+shader_parameter/surface_distortion_amount = 0.27
+shader_parameter/_DepthGradientShallow = Color(0.325, 0.807, 0.971, 0.725)
+shader_parameter/_DepthGradientDeep = Color(0.086, 0.407, 1, 0.749)
+shader_parameter/_DepthMaxDistance = 1.0
+shader_parameter/_DepthFactor = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ojjdq"]
+material = SubResource("ShaderMaterial_ivr0u")
+size = Vector2(4, 4)
+subdivide_width = 4
+subdivide_depth = 4
+
+[node name="MainScene" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ojjdq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961813, 0.273707, 0, -0.273707, 0.961813, 0, 2.31276, 4.71743)
